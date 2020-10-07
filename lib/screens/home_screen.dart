@@ -49,15 +49,25 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Stack(
         children: [
           BackgroundImage(
-              backgroundImage: selectedMovie?.getPosterImg() ?? null),
+            backgroundImage: selectedMovie?.getPosterImg() ?? null,
+            opacity: 0.75,
+          ),
           _buildMovieContent(context, size),
           BottomItem(
-            icon: Icons.arrow_back,
+             child: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+              size: 36,
+            ),
             size: 36,
             alignment: MainAxisAlignment.start,
           ),
           BottomItem(
-            icon: CustomIcons.popcorn,
+             child: Icon(
+              CustomIcons.popcorn,
+              color: Colors.white,
+              size: 48,
+            ),
             size: 48,
             alignment: MainAxisAlignment.center,
           ),

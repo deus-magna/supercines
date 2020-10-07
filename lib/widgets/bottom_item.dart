@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
 class BottomItem extends StatelessWidget {
-  final IconData icon;
   final double size;
   final MainAxisAlignment alignment;
+  final Function onPressed;
+  final Widget child;
 
   const BottomItem({
     Key key,
-    @required this.icon,
     @required this.size,
     @required this.alignment,
+    this.onPressed,
+    @required this.child,
   }) : super(key: key);
 
   @override
@@ -21,18 +23,17 @@ class BottomItem extends StatelessWidget {
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Container(
-            height: 48,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: alignment,
-              children: [
-                Icon(
-                  icon,
-                  color: Colors.white,
-                  size: size,
-                ),
-              ],
+          child: GestureDetector(
+            onTap: onPressed,
+            child: Container(
+              height: 48,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: alignment,
+                children: [
+                  child,
+                ],
+              ),
             ),
           ),
         ),

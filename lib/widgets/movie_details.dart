@@ -26,18 +26,6 @@ class _MovieDetailsState extends State<MovieDetails> {
   double opacity = 1.0;
 
   @override
-  void initState() {
-    super.initState();
-    print('init');
-  }
-
-  @override
-  void didUpdateWidget(MovieDetails oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    changeOpacity();
-  }
-
-  @override
   Widget build(BuildContext context) {
     
     return Container(
@@ -75,7 +63,7 @@ class _MovieDetailsState extends State<MovieDetails> {
     );
   }
 
-  Container _buildBuyTicketsButton(BuildContext context) {
+  Widget _buildBuyTicketsButton(BuildContext context) {
     return Container(
       width: double.infinity,
       height: MediaQuery.of(context).size.height * 0.062,
@@ -90,7 +78,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                 color: Colors.black,
                 fontSize: 18,
                 fontWeight: FontWeight.w500)),
-        onPressed: () => print('Buy tickets'),
+        onPressed: () => Navigator.of(context).pushNamed('/tickets', arguments: widget.movie),
       ),
     );
   }
@@ -133,7 +121,7 @@ class _MovieDetailsState extends State<MovieDetails> {
       opacity: opacity,
       duration: Duration(milliseconds: 500),
       child: Text(
-        widget.movie.title,
+        widget.movie.title.toUpperCase(),
         textAlign: TextAlign.center,
         style: TextStyle(
             color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
@@ -152,17 +140,5 @@ class _MovieDetailsState extends State<MovieDetails> {
         )
       ],
     );
-  }
-
-  changeOpacity() {
-    opacity = 0.0;
-
-    Future.delayed(Duration(milliseconds: 500), () {
-      setState(() {
-        
-      });
-      opacity = 1.0;
-      print('enter here');
-    });
   }
 }

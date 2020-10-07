@@ -4,10 +4,14 @@ import 'package:supercines/framework/framework.dart';
 class BackgroundImage extends StatelessWidget {
   const BackgroundImage({
     Key key,
-    @required this.backgroundImage,
+    this.backgroundImage, 
+    this.color = backgroundPurple, 
+    this.opacity = 1,
   }) : super(key: key);
 
   final String backgroundImage;
+  final Color color;
+  final double opacity;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +24,7 @@ class BackgroundImage extends StatelessWidget {
         children: [
           _buildGradientRect(size),
           _buildBottomGradientRect(size),
-          _buildCoverColor(),
+          _buildCoverColor(color, opacity),
         ],
       ),
     );
@@ -40,10 +44,10 @@ class BackgroundImage extends StatelessWidget {
     );
   }
 
-  Container _buildCoverColor() {
+  Container _buildCoverColor(Color color, double opacity) {
     return Container(
       decoration: BoxDecoration(
-        color: backgroundPurple.withOpacity(0.75),
+        color: color.withOpacity(opacity),
       ),
     );
   }

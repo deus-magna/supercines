@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:supercines/framework/animations.dart';
+
 import 'package:supercines/framework/colors.dart';
 import 'package:supercines/models/movie_model.dart';
+import 'package:supercines/models/seats_row_model.dart';
+import 'package:supercines/utils/utils.dart' as utils;
 import 'package:supercines/widgets/background_image.dart';
 import 'package:supercines/widgets/bottom_item.dart';
+import 'package:supercines/widgets/calendar_button.dart';
 import 'package:supercines/widgets/custom_app_bar.dart';
 import 'package:supercines/widgets/horizontal_scroll_list.dart';
+import 'package:supercines/widgets/movie_seats/movie_seats_widget.dart';
+import 'package:supercines/widgets/poster_imagen.dart';
+import 'package:supercines/widgets/screen_painter.dart';
+import 'package:supercines/widgets/time_button.dart';
 
 class TicketsScreen extends StatefulWidget {
+  final Movie movie;
+
+  const TicketsScreen({Key key, this.movie}) : super(key: key);
   @override
   _TicketsScreenState createState() => _TicketsScreenState();
 }
@@ -17,10 +29,14 @@ class _TicketsScreenState extends State<TicketsScreen> {
   Movie _movie;
   int selectedCalendarIndex;
   int selectedPriceIndex;
+  List<SeatsRow> listOfSeatsRow = utils.getMockSeatsList();
+  double total = 0.0;
 
   @override
   Widget build(BuildContext context) {
-    _movie = ModalRoute.of(context).settings.arguments;
+    _movie = ModalRoute.of(context).settings.arguments != null
+        ? ModalRoute.of(context).settings.arguments
+        : widget.movie;
 
     return Scaffold(
       body: Stack(
@@ -39,7 +55,7 @@ class _TicketsScreenState extends State<TicketsScreen> {
           ),
           BottomItem(
             child: Text(
-              "\$3.75",
+              "\$$total",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
@@ -67,7 +83,7 @@ class _TicketsScreenState extends State<TicketsScreen> {
           borderRadius: BorderRadius.circular(8.0),
         ),
         color: yellow,
-        onPressed: () {},
+        onPressed: () => Navigator.of(context).pop(),
         child: Text('PAY',
             style: TextStyle(
                 color: Colors.black,
@@ -78,9 +94,9 @@ class _TicketsScreenState extends State<TicketsScreen> {
   }
 
   SafeArea _buildMovieContent(BuildContext context) {
-    
     return SafeArea(
       child: Container(
+        margin: EdgeInsets.only(top: 5.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
@@ -89,8 +105,12 @@ class _TicketsScreenState extends State<TicketsScreen> {
             PosterImage(movie: _movie),
             SizedBox(height: 10),
             _buildHorizontalCalendarView(),
-             SizedBox(height: 10),
+            SizedBox(height: 10),
             _buildHorizontalPriceView(),
+            SizedBox(height: 40),
+            _buildCinemaScreen(),
+            SizedBox(height: 20),
+            _buildSeatsArea(MediaQuery.of(context).size),
           ],
         ),
       ),
@@ -98,14 +118,8 @@ class _TicketsScreenState extends State<TicketsScreen> {
   }
 
   Widget _buildHorizontalPriceView() {
+    final data = utils.getMockTimeAndPrice();
 
-    final List<TimeData> data = [
-      TimeData('17:25', 'FROM \$3,75'),
-      TimeData('19:55', 'FROM \$3,75'),
-      TimeData('20:25', 'FROM \$3,75'),
-      TimeData('21:05', 'FROM \$3,75')
-    ];
-    
     return HorizontalScrollList(
       height: 80,
       itemCount: data.length,
@@ -126,16 +140,7 @@ class _TicketsScreenState extends State<TicketsScreen> {
   }
 
   Widget _buildHorizontalCalendarView() {
-
-    final List<Calendar> data = [
-      Calendar(11, 'SA'),
-      Calendar(12, 'SU'),
-      Calendar(13, 'MO'),
-      Calendar(14, 'TU'),
-      Calendar(15, 'WE'),
-      Calendar(16, 'TH'),
-      Calendar(17, 'FR'),
-    ];
+    final data = utils.getMockCalendar();
 
     return HorizontalScrollList(
       height: 85,
@@ -156,54 +161,44 @@ class _TicketsScreenState extends State<TicketsScreen> {
       },
     );
   }
-}
 
-class PosterImage extends StatelessWidget {
-  const PosterImage({
-    Key key,
-    @required Movie movie,
-    this.padding = 18.0,
-  })  : _movie = movie,
-        super(key: key);
+  Widget _buildSeatsArea(Size size) {
+    return TranslateAnimation(
+      duration: Duration(milliseconds: 1500),
+      child: Container(
+        height: size.height * 0.3,
+        child: MovieSeats(
+          seats: listOfSeatsRow,
+          onItemSelected: (row, index) => _checkReservedSeats(row, index),
+        ),
+      ),
+    );
+  }
 
-  final Movie _movie;
-  final double padding;
+  _checkReservedSeats(int row, int index) {
+    print('ROW: $row, INDEX: $index');
+    setState(() {
+      if (!listOfSeatsRow[row].reservedSeats.contains(index + 1)) {
+        if (listOfSeatsRow[row].selectedSeats.contains(index + 1)) {
+          listOfSeatsRow[row].selectedSeats.remove(index + 1);
+          total -= 3.75;
+        } else {
+          listOfSeatsRow[row].selectedSeats.add(index + 1);
+          total += 3.75;
+        }
+      }
+    });
+  }
 
-  @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: padding),
-      child: Row(
-        children: [
-          Hero(
-            tag: _movie.id,
-            child: Container(
-              width: 54,
-              height: size.height * 0.085,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
-                child: FadeInImage(
-                  image: NetworkImage(_movie.getPosterImg()),
-                  placeholder: AssetImage('assets/img/no-image.jpg'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(width: 10),
-          Expanded(
-            child: Text(
-              _movie.title.toUpperCase(),
-              maxLines: 2,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                fontSize: 20,
-              ),
-            ),
-          ),
-        ],
+  Widget _buildCinemaScreen() {
+    return TranslateAnimation(
+      duration: Duration(milliseconds: 1000),
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 20.0),
+        child: CustomPaint(
+          size: Size(double.infinity, 30),
+          painter: ScreenPainter(),
+        ),
       ),
     );
   }

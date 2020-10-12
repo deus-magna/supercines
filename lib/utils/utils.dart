@@ -1,5 +1,8 @@
 import 'package:supercines/models/actores_model.dart';
+import 'package:supercines/models/calendar_data_model.dart';
 import 'package:supercines/models/genre_model.dart';
+import 'package:supercines/models/seats_row_model.dart';
+import 'package:supercines/models/time_data_model.dart';
 
 String getActors(List<Actor> actors) {
   String actorsString = '';
@@ -19,4 +22,35 @@ String getGenresFromId(List<int> genreIds, List<Genre> genres) {
     }
   }
   return genresString.substring(0, genresString.length - 1);
+}
+
+List<Calendar> getMockCalendar() {
+  return [
+    Calendar(11, 'SA'),
+    Calendar(12, 'SU'),
+    Calendar(13, 'MO'),
+    Calendar(14, 'TU'),
+    Calendar(15, 'WE'),
+    Calendar(16, 'TH'),
+    Calendar(17, 'FR'),
+  ];
+}
+
+List<TimeData> getMockTimeAndPrice() {
+  return [
+    TimeData('17:25', 'FROM \$3,75'),
+    TimeData('19:55', 'FROM \$3,75'),
+    TimeData('20:25', 'FROM \$3,75'),
+    TimeData('21:05', 'FROM \$3,75')
+  ];
+}
+
+List<SeatsRow> getMockSeatsList() {
+  return [
+    SeatsRow(numberOfSeats: 8, reservedSeats: [1], selectedSeats: []),
+    SeatsRow(numberOfSeats: 8, reservedSeats: [], selectedSeats: []),
+    SeatsRow(numberOfSeats: 8, reservedSeats: [2], selectedSeats: []),
+    SeatsRow(numberOfSeats: 8, reservedSeats: [1, 2], selectedSeats: []),
+    SeatsRow(numberOfSeats: 8, reservedSeats: [3, 4], selectedSeats: []),
+  ];
 }

@@ -22,9 +22,9 @@ class BackgroundImage extends StatelessWidget {
           : BoxDecoration(),
       child: Stack(
         children: [
+          _buildCoverColor(color, opacity),
           _buildGradientRect(size),
           _buildBottomGradientRect(size),
-          _buildCoverColor(color, opacity),
         ],
       ),
     );

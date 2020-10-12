@@ -22,7 +22,7 @@ class BottomItem extends StatelessWidget {
       bottom: 0,
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
           child: GestureDetector(
             onTap: onPressed,
             child: Container(

@@ -76,9 +76,10 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  SafeArea _buildMovieContent(BuildContext context, Size size) {
+  Widget _buildMovieContent(BuildContext context, Size size) {
     return SafeArea(
       child: Container(
+        margin: EdgeInsets.only(top: 5.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[

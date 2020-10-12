@@ -41,7 +41,7 @@ class _TicketsScreenState extends State<TicketsScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          BackgroundImage(color: backgroundBlue, backgroundImage: null),
+          BackgroundImage(color: backgroundBlue, backgroundImage: null, animatedOpacity: 1.0,),
           _buildMovieContent(context),
           BottomItem(
             child: Icon(

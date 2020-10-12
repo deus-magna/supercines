@@ -4,28 +4,43 @@ import 'package:supercines/framework/framework.dart';
 class BackgroundImage extends StatelessWidget {
   const BackgroundImage({
     Key key,
-    this.backgroundImage, 
-    this.color = backgroundPurple, 
+    this.backgroundImage,
+    this.color = backgroundPurple,
     this.opacity = 1,
+    @required this.animatedOpacity,
   }) : super(key: key);
 
   final String backgroundImage;
   final Color color;
   final double opacity;
+  final double animatedOpacity;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      decoration: backgroundImage != null
-          ? imageDecoration(backgroundImage)
-          : BoxDecoration(),
       child: Stack(
         children: [
+          backgroundImage == null ? Container() : _buildAnimatedOpacity(),
           _buildCoverColor(color, opacity),
           _buildGradientRect(size),
           _buildBottomGradientRect(size),
         ],
+      ),
+    );
+  }
+
+  Widget _buildAnimatedOpacity() {
+    return AnimatedOpacity(
+      opacity: animatedOpacity,
+      duration: Duration(milliseconds: animatedOpacity == 0.0 ? 750 : 500),
+      curve: animatedOpacity == 0.0 ? Curves.easeOut : Curves.easeIn,
+      child: Container(
+        height: double.infinity,
+        child: Image(
+          image: NetworkImage(backgroundImage),
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }

@@ -7,24 +7,22 @@ import 'package:supercines/screens/tickets_screen.dart';
 import 'package:supercines/widgets/trailer_button.dart';
 import 'package:supercines/utils/utils.dart' as utils;
 
-class MovieDetails extends StatefulWidget {
+class MovieDetails extends StatelessWidget {
+  
   const MovieDetails({
     Key key,
     @required this.genres,
     @required this.actors,
     @required this.movie,
+    @required this.opacity,
   }) : super(key: key);
 
   final List<Genre> genres;
   final List<Actor> actors;
   final Movie movie;
+  final double opacity;
 
-  @override
-  _MovieDetailsState createState() => _MovieDetailsState();
-}
-
-class _MovieDetailsState extends State<MovieDetails> {
-  double opacity = 1.0;
+  final Duration _duration = const Duration(milliseconds: 800);
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +46,12 @@ class _MovieDetailsState extends State<MovieDetails> {
   Widget _buildMovieCast() {
     return AnimatedOpacity(
       opacity: opacity,
-      duration: Duration(milliseconds: 500),
+      duration: _duration,
+      curve: opacity == 0.0? Curves.easeOut : Curves.easeIn,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Text(
-          utils.getActors(widget.actors),
+          utils.getActors(actors),
           overflow: TextOverflow.ellipsis,
           maxLines: 1,
           textAlign: TextAlign.center,
@@ -85,7 +84,7 @@ class _MovieDetailsState extends State<MovieDetails> {
         ),
         onPressed: () => _pushMovieDetail(context),
         // onPressed: () => Navigator.of(context)
-        //     .pushNamed('/tickets', arguments: widget.movie),
+        //     .pushNamed('/tickets', arguments: movie),
       ),
     );
   }
@@ -97,7 +96,7 @@ class _MovieDetailsState extends State<MovieDetails> {
           return FadeTransition(
             opacity: animation,
             child: TicketsScreen(
-              movie: widget.movie,
+              movie: movie,
             ),
           );
         },
@@ -109,14 +108,15 @@ class _MovieDetailsState extends State<MovieDetails> {
   Widget _buildMovieDetails() {
     return AnimatedOpacity(
       opacity: opacity,
-      duration: Duration(milliseconds: 500),
+      duration: _duration,
+      curve: opacity == 0.0? Curves.easeOut : Curves.easeIn,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 40),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              widget.movie.getYear(),
+              movie.getYear(),
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 14,
@@ -131,7 +131,7 @@ class _MovieDetailsState extends State<MovieDetails> {
             ),
             Flexible(
               child: Text(
-                utils.getGenresFromId(widget.movie.genreIds, widget.genres),
+                utils.getGenresFromId(movie.genreIds, genres),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
                 style: TextStyle(
@@ -149,13 +149,14 @@ class _MovieDetailsState extends State<MovieDetails> {
   Widget _buildMovieTitle(BuildContext context) {
     return AnimatedOpacity(
       opacity: opacity,
-      duration: Duration(milliseconds: 500),
+      duration: _duration,
+      curve: opacity == 0.0? Curves.easeOut : Curves.easeIn,
       child: Container(
         alignment: Alignment.center,
         height: MediaQuery.of(context).size.height * 0.07389,
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Text(
-          widget.movie.title.toUpperCase(),
+          movie.title.toUpperCase(),
           textAlign: TextAlign.center,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,

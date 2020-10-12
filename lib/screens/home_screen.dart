@@ -24,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Actor> actors = [];
   Movie selectedMovie;
   bool _isLoading;
+  double _opacity = 0.0;
 
   @override
   void initState() {
@@ -38,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     genres = await moviesService.getGenreList();
     actors = await moviesService.getCast(selectedMovie.id.toString());
+    _opacity = 1.0;
     setState(() => _isLoading = false);
   }
 
@@ -51,10 +53,11 @@ class _HomeScreenState extends State<HomeScreen> {
           BackgroundImage(
             backgroundImage: selectedMovie?.getPosterImg() ?? null,
             opacity: 0.75,
+            animatedOpacity: _opacity,
           ),
           _buildMovieContent(context, size),
           BottomItem(
-             child: Icon(
+            child: Icon(
               Icons.arrow_back,
               color: Colors.white,
               size: 36,
@@ -63,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
             alignment: MainAxisAlignment.start,
           ),
           BottomItem(
-             child: Icon(
+            child: Icon(
               CustomIcons.popcorn,
               color: Colors.white,
               size: 48,
@@ -88,7 +91,11 @@ class _HomeScreenState extends State<HomeScreen> {
             _isLoading
                 ? Container()
                 : MovieDetails(
-                    genres: genres, actors: actors, movie: selectedMovie),
+                    genres: genres,
+                    actors: actors,
+                    movie: selectedMovie,
+                    opacity: _opacity,
+                  ),
             _cardsSwiper(),
           ],
         ),
@@ -110,9 +117,16 @@ class _HomeScreenState extends State<HomeScreen> {
           );
   }
 
-  _onMovieChanged(index) {
+  _onMovieChanged(index) async {
+    setState(() {
+      _opacity = 0.0;
+    });
+
+    await Future.delayed(Duration(milliseconds: 700));
+
     setState(() {
       selectedMovie = movies[index];
+      _opacity = 1.0;
       _getActors();
     });
   }

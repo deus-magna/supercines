@@ -64,6 +64,7 @@ class MovieDetails extends StatelessWidget {
     );
   }
 
+  // Crea el boton que se utiliza para comprar tickets para ver la pelicula.
   Widget _buildBuyTicketsButton(BuildContext context) {
     return Container(
       width: double.infinity,

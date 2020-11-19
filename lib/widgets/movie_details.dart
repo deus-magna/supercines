@@ -64,6 +64,7 @@ class MovieDetails extends StatelessWidget {
     );
   }
 
+  // Crea el boton que se utiliza para comprar tickets para ver la pelicula.
   Widget _buildBuyTicketsButton(BuildContext context) {
     return Container(
       width: double.infinity,
@@ -83,8 +84,6 @@ class MovieDetails extends StatelessWidget {
           ),
         ),
         onPressed: () => _pushMovieDetail(context),
-        // onPressed: () => Navigator.of(context)
-        //     .pushNamed('/tickets', arguments: movie),
       ),
     );
   }
@@ -146,6 +145,7 @@ class MovieDetails extends StatelessWidget {
     );
   }
 
+  // Crea el titulo de la pelicula
   Widget _buildMovieTitle(BuildContext context) {
     return AnimatedOpacity(
       opacity: opacity,

@@ -83,8 +83,6 @@ class MovieDetails extends StatelessWidget {
           ),
         ),
         onPressed: () => _pushMovieDetail(context),
-        // onPressed: () => Navigator.of(context)
-        //     .pushNamed('/tickets', arguments: movie),
       ),
     );
   }
@@ -146,6 +144,7 @@ class MovieDetails extends StatelessWidget {
     );
   }
 
+  // Crea el titulo de la pelicula
   Widget _buildMovieTitle(BuildContext context) {
     return AnimatedOpacity(
       opacity: opacity,

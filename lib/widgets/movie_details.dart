@@ -83,8 +83,6 @@ class MovieDetails extends StatelessWidget {
           ),
         ),
         onPressed: () => _pushMovieDetail(context),
-        // onPressed: () => Navigator.of(context)
-        //     .pushNamed('/tickets', arguments: movie),
       ),
     );
   }

@@ -144,6 +144,7 @@ class MovieDetails extends StatelessWidget {
     );
   }
 
+  // Crea el titulo de la pelicula
   Widget _buildMovieTitle(BuildContext context) {
     return AnimatedOpacity(
       opacity: opacity,

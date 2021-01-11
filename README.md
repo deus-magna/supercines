@@ -1,6 +1,8 @@
 # supercines
 
-A new Flutter project.
+A new Flutter project implementing a little cinema and buy tickets concept from Dribbble, design credits to Aldo Mora, you can see more designs on his Dribbble.
+ 
+[Aldo Mora Dribbble](https://dribbble.com/shots/9487265-Concept-App-for-buy-tickets)
 
 ## Getting Started
 

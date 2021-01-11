@@ -1,5 +1,8 @@
 # Supercines
-![version](https://img.shields.io/badge/version-1.0.0-blue) ![License](https://img.shields.io/badge/License-MIT-yellow.svg) ![Twitter](https://img.shields.io/twitter/follow/deus_magna?style=social)
+![version](https://img.shields.io/badge/version-1.0.0-blue) 
+![documentation](https://img.shields.io/badge/documentation-yes-success)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg) 
+![Twitter](https://img.shields.io/twitter/follow/deus_magna?style=social)
 
 ![logo](https://cdn.dribbble.com/users/904567/screenshots/9487265/media/e1c581c840222b76dbe3062d48a00336.png)
 ## Introduction 
@@ -15,11 +18,17 @@ A new Flutter project implementing a buy tickets concept from Dribbble, design c
 ![SS1](ss/ss-1.png)
 ![SS2](ss/ss-2.png)
 
-## Author
+## 👨🏻‍💻 Author
+My name is Renato Montufar, I am a mobile developer, I love UI/UX and I am learning new things all the time. Feel free to contact me! 😀
+
+- [LinkedIn](https://www.linkedin.com/in/deus-magna/)
+- [GitHub](https://github.com/deus-magna/)
+- [Twitter](https://twitter.com/deus_magna)
+- [Instagram](https://www.instagram.com/deus_magna/) 
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome! <br/>Feel free to check [issues page](https://www.coolflutter.com/).
+Contributions, issues and feature requests are welcome!
 
 ## 🤔 Questions?
 You can find me on [![Twitter](https://img.shields.io/twitter/follow/deus_magna?style=social)](https://twitter.com/burhanrashid52) [![Instagram](https://img.shields.io/badge/Instagram-%40deus__magna-orange)](https://www.instagram.com/deus_magna/) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%40deus--magna-blue)](https://www.linkedin.com/in/deus-magna/)

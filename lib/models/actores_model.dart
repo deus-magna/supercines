@@ -1,19 +1,17 @@
 class Cast {
-
-  List<Actor> actors = new List();
+  List<Actor> actors = [];
 
   Cast();
 
-  Cast.fromJsonList( List<dynamic> jsonList) {
-    if (jsonList == null)  return;
-    
+  Cast.fromJsonList(List<dynamic> jsonList) {
+    if (jsonList == null) return;
+
     for (var item in jsonList) {
       final actor = new Actor.fromJson(item);
-      actors.add( actor );
+      actors.add(actor);
     }
   }
 }
-
 
 class Actor {
   int castId;
@@ -59,12 +57,11 @@ class Actor {
     return data;
   }
 
-  getPhoto(){
-
-    if ( profilePath == null ) {
+  getPhoto() {
+    if (profilePath == null) {
       return 'https://bizraise.pro/wp-content/uploads/2014/09/no-avatar-300x300.png';
     } else {
-      return 'https://image.tmdb.org/t/p/w500/$profilePath';    
+      return 'https://image.tmdb.org/t/p/w500/$profilePath';
     }
   }
 }

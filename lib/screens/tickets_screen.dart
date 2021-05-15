@@ -41,7 +41,11 @@ class _TicketsScreenState extends State<TicketsScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          BackgroundImage(color: backgroundBlue, backgroundImage: null, animatedOpacity: 1.0,),
+          BackgroundImage(
+            color: backgroundBlue,
+            backgroundImage: null,
+            animatedOpacity: 1.0,
+          ),
           _buildMovieContent(context),
           BottomItem(
             child: Icon(
@@ -76,13 +80,19 @@ class _TicketsScreenState extends State<TicketsScreen> {
   }
 
   Widget _buildPayButton(BuildContext context) {
+    final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
+      onPrimary: Colors.black87,
+      primary: yellow,
+      minimumSize: Size(88, 36),
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+      ),
+    );
     return Container(
       height: MediaQuery.of(context).size.height * 0.062,
-      child: RaisedButton(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        color: yellow,
+      child: ElevatedButton(
+        style: raisedButtonStyle,
         onPressed: () => Navigator.of(context).pop(),
         child: Text('PAY',
             style: TextStyle(

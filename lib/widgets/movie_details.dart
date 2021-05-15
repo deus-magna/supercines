@@ -8,7 +8,6 @@ import 'package:supercines/widgets/trailer_button.dart';
 import 'package:supercines/utils/utils.dart' as utils;
 
 class MovieDetails extends StatelessWidget {
-  
   const MovieDetails({
     Key key,
     @required this.genres,
@@ -47,7 +46,7 @@ class MovieDetails extends StatelessWidget {
     return AnimatedOpacity(
       opacity: opacity,
       duration: _duration,
-      curve: opacity == 0.0? Curves.easeOut : Curves.easeIn,
+      curve: opacity == 0.0 ? Curves.easeOut : Curves.easeIn,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Text(
@@ -66,15 +65,21 @@ class MovieDetails extends StatelessWidget {
 
   // Crea el boton que se utiliza para comprar tickets para ver la pelicula.
   Widget _buildBuyTicketsButton(BuildContext context) {
+    final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
+      onPrimary: Colors.black87,
+      primary: yellow,
+      minimumSize: Size(88, 36),
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+      ),
+    );
     return Container(
       width: double.infinity,
       height: MediaQuery.of(context).size.height * 0.062,
       margin: EdgeInsets.symmetric(horizontal: 60),
-      child: RaisedButton(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        color: yellow,
+      child: ElevatedButton(
+        style: raisedButtonStyle,
         child: Text(
           'BUY TICKETS',
           style: TextStyle(
@@ -108,7 +113,7 @@ class MovieDetails extends StatelessWidget {
     return AnimatedOpacity(
       opacity: opacity,
       duration: _duration,
-      curve: opacity == 0.0? Curves.easeOut : Curves.easeIn,
+      curve: opacity == 0.0 ? Curves.easeOut : Curves.easeIn,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 40),
         child: Row(
@@ -150,7 +155,7 @@ class MovieDetails extends StatelessWidget {
     return AnimatedOpacity(
       opacity: opacity,
       duration: _duration,
-      curve: opacity == 0.0? Curves.easeOut : Curves.easeIn,
+      curve: opacity == 0.0 ? Curves.easeOut : Curves.easeIn,
       child: Container(
         alignment: Alignment.center,
         height: MediaQuery.of(context).size.height * 0.07389,

@@ -22,8 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Movie> movies = [];
   List<Genre> genres = [];
   List<Actor> actors = [];
-  Movie selectedMovie;
-  bool _isLoading;
+  late Movie selectedMovie;
+  late bool _isLoading;
   double _opacity = 0.0;
 
   @override
@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Stack(
         children: [
           BackgroundImage(
-            backgroundImage: selectedMovie?.getPosterImg() ?? null,
+            backgroundImage: selectedMovie.getPosterImg() ?? null,
             opacity: 0.75,
             animatedOpacity: _opacity,
           ),

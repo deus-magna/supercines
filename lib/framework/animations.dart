@@ -8,9 +8,9 @@ class TranslateAnimation extends StatelessWidget {
   final Axis offsetDirection;
 
   const TranslateAnimation({
-    Key key,
+    Key? key,
     this.duration = const Duration(milliseconds: 800),
-    this.child,
+    required this.child,
     this.offset = 140.0,
     this.curve = Curves.fastOutSlowIn,
     this.offsetDirection = Axis.vertical,
@@ -23,7 +23,7 @@ class TranslateAnimation extends StatelessWidget {
       child: child,
       curve: curve,
       tween: Tween(begin: 1.0, end: 0.0),
-      builder: (context, value, child) {
+      builder: (context, double value, child) {
         return Transform.translate(
             offset: offsetDirection == Axis.horizontal
                 ? Offset(value * offset, 0)
@@ -42,9 +42,9 @@ class ScaleAnimation extends StatelessWidget {
   final Curve curve;
 
   const ScaleAnimation({
-    Key key,
+    Key? key,
     this.duration = const Duration(milliseconds: 800),
-    this.child,
+    required this.child,
     this.curve = Curves.fastOutSlowIn,
     this.initScale = 0.0,
     this.finalScale = 1.0,
@@ -57,7 +57,7 @@ class ScaleAnimation extends StatelessWidget {
       child: child,
       curve: curve,
       tween: Tween(begin: initScale, end: finalScale),
-      builder: (context, value, child) {
+      builder: (context, double value, child) {
         return Transform.scale(
           scale: value,
           child: child,

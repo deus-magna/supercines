@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:supercines/framework/framework.dart';
 
 var gradientRect =
-    ({@required Color first, @required Color second}) => BoxDecoration(
+    ({required Color first, required Color second}) => BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,

@@ -3,14 +3,14 @@ import 'package:supercines/framework/framework.dart';
 
 class BackgroundImage extends StatelessWidget {
   const BackgroundImage({
-    Key key,
+    Key? key,
     this.backgroundImage,
     this.color = backgroundPurple,
     this.opacity = 1,
-    @required this.animatedOpacity,
+    required this.animatedOpacity,
   }) : super(key: key);
 
-  final String backgroundImage;
+  final String? backgroundImage;
   final Color color;
   final double opacity;
   final double animatedOpacity;
@@ -38,7 +38,7 @@ class BackgroundImage extends StatelessWidget {
       child: Container(
         height: double.infinity,
         child: Image(
-          image: NetworkImage(backgroundImage),
+          image: NetworkImage(backgroundImage!),
           fit: BoxFit.cover,
         ),
       ),

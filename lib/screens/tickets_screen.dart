@@ -18,7 +18,7 @@ import 'package:supercines/widgets/time_button.dart';
 class TicketsScreen extends StatefulWidget {
   final Movie movie;
 
-  const TicketsScreen({Key key, this.movie}) : super(key: key);
+  const TicketsScreen({Key? key, required this.movie}) : super(key: key);
   @override
   _TicketsScreenState createState() => _TicketsScreenState();
 }
@@ -26,16 +26,16 @@ class TicketsScreen extends StatefulWidget {
 class _TicketsScreenState extends State<TicketsScreen> {
   final _avatar =
       'https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg';
-  Movie _movie;
-  int selectedCalendarIndex;
-  int selectedPriceIndex;
+  late Movie _movie;
+  late int selectedCalendarIndex;
+  late int selectedPriceIndex;
   List<SeatsRow> listOfSeatsRow = utils.getMockSeatsList();
   double total = 0.0;
 
   @override
   Widget build(BuildContext context) {
-    _movie = ModalRoute.of(context).settings.arguments != null
-        ? ModalRoute.of(context).settings.arguments
+    _movie = ModalRoute.of(context)!.settings.arguments != null
+        ? ModalRoute.of(context)!.settings.arguments as Movie
         : widget.movie;
 
     return Scaffold(

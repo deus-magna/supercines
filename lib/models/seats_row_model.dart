@@ -4,8 +4,8 @@ class SeatsRow {
   final List<int> selectedSeats;
 
   SeatsRow({
-    this.selectedSeats,
-    this.numberOfSeats,
-    this.reservedSeats,
+    required this.selectedSeats,
+    required this.numberOfSeats,
+    required this.reservedSeats,
   });
 }

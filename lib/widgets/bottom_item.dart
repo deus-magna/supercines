@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 class BottomItem extends StatelessWidget {
   final double size;
   final MainAxisAlignment alignment;
-  final Function onPressed;
+  final Function()? onPressed;
   final Widget child;
 
   const BottomItem({
-    Key key,
-    @required this.size,
-    @required this.alignment,
+    Key? key,
+    required this.size,
+    required this.alignment,
     this.onPressed,
-    @required this.child,
+    required this.child,
   }) : super(key: key);
 
   @override

@@ -4,8 +4,8 @@ import 'package:supercines/widgets/theater_selector.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
-    Key key,
-    @required this.avatar,
+    Key? key,
+    required this.avatar,
   }) : super(key: key);
 
   final String avatar;

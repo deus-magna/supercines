@@ -4,9 +4,9 @@ import 'package:supercines/widgets/movie_seats/movie_seat_widget.dart';
 
 class RowOfSeats extends StatelessWidget {
   const RowOfSeats({
-    Key key,
-    @required this.seats,
-    @required this.onItemSelected,
+    Key? key,
+    required this.seats,
+    required this.onItemSelected,
   }) : super(key: key);
 
   final SeatsRow seats;

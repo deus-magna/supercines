@@ -3,7 +3,7 @@ import 'package:supercines/framework/framework.dart';
 
 class TrailerButton extends StatelessWidget {
   const TrailerButton({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

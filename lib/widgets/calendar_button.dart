@@ -4,15 +4,19 @@ import 'package:supercines/models/calendar_data_model.dart';
 
 class CalendarButton extends StatelessWidget {
   final Calendar calendar;
-  final Function onPressed;
+  final Function()? onPressed;
   final bool selected;
 
-  const CalendarButton({this.calendar, this.onPressed, this.selected = false});
+  const CalendarButton({
+    required this.calendar,
+    this.onPressed,
+    this.selected = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onPressed(),
+      onTap: onPressed,
       child: _buildContent(),
     );
   }

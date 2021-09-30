@@ -4,8 +4,6 @@ class Cast {
   Cast();
 
   Cast.fromJsonList(List<dynamic> jsonList) {
-    if (jsonList == null) return;
-
     for (var item in jsonList) {
       final actor = new Actor.fromJson(item);
       actors.add(actor);
@@ -14,24 +12,25 @@ class Cast {
 }
 
 class Actor {
-  int castId;
-  String character;
-  String creditId;
-  int gender;
-  int id;
-  String name;
-  int order;
-  String profilePath;
+  int? castId;
+  String? character;
+  String? creditId;
+  int? gender;
+  int? id;
+  String? name;
+  int? order;
+  String? profilePath;
 
-  Actor(
-      {this.castId,
-      this.character,
-      this.creditId,
-      this.gender,
-      this.id,
-      this.name,
-      this.order,
-      this.profilePath});
+  Actor({
+    this.castId,
+    this.character,
+    this.creditId,
+    this.gender,
+    this.id,
+    this.name,
+    this.order,
+    this.profilePath,
+  });
 
   Actor.fromJson(Map<String, dynamic> json) {
     castId = json['cast_id'];

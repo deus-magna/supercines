@@ -16,9 +16,9 @@ import 'package:supercines/widgets/screen_painter.dart';
 import 'package:supercines/widgets/time_button.dart';
 
 class TicketsScreen extends StatefulWidget {
-  final Movie movie;
+  final Movie? movie;
 
-  const TicketsScreen({Key? key, required this.movie}) : super(key: key);
+  const TicketsScreen({Key? key, this.movie}) : super(key: key);
   @override
   _TicketsScreenState createState() => _TicketsScreenState();
 }
@@ -34,9 +34,9 @@ class _TicketsScreenState extends State<TicketsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _movie = ModalRoute.of(context)!.settings.arguments != null
+    _movie = (ModalRoute.of(context)!.settings.arguments != null
         ? ModalRoute.of(context)!.settings.arguments as Movie
-        : widget.movie;
+        : widget.movie)!;
 
     return Scaffold(
       body: Stack(

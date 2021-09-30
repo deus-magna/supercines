@@ -4,15 +4,19 @@ import 'package:supercines/models/time_data_model.dart';
 
 class TimeButton extends StatelessWidget {
   final TimeData timeData;
-  final Function onPressed;
+  final Function()? onPressed;
   final bool selected;
 
-  const TimeButton({this.timeData, this.onPressed, this.selected = false});
+  const TimeButton({
+    required this.timeData,
+    this.onPressed,
+    this.selected = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onPressed(),
+      onTap: onPressed,
       child: _buildContent(),
     );
   }

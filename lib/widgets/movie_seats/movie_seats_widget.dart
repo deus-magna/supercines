@@ -7,9 +7,9 @@ class MovieSeats extends StatelessWidget {
   final Function(int row, int index) onItemSelected;
 
   const MovieSeats({
-    Key key,
-    this.seats,
-    @required this.onItemSelected,
+    Key? key,
+    required this.seats,
+    required this.onItemSelected,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {

@@ -3,8 +3,8 @@ import 'package:supercines/models/movie_model.dart';
 
 class PosterImage extends StatelessWidget {
   const PosterImage({
-    Key key,
-    @required Movie movie,
+    Key? key,
+    required Movie movie,
     this.padding = 18.0,
   })  : _movie = movie,
         super(key: key);
@@ -34,7 +34,7 @@ class PosterImage extends StatelessWidget {
   Widget _buildMovieTitle() {
     return Expanded(
       child: Text(
-        _movie.title.toUpperCase(),
+        _movie.title!.toUpperCase(),
         maxLines: 2,
         style: TextStyle(
           fontWeight: FontWeight.bold,
@@ -47,7 +47,7 @@ class PosterImage extends StatelessWidget {
 
   Widget _buildImageContainer(Size size) {
     return Hero(
-      tag: _movie.id,
+      tag: _movie.id ?? 0,
       child: Container(
         width: 54,
         height: size.height * 0.085,

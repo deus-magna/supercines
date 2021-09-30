@@ -13,14 +13,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           brightness: Brightness.light,
-          accentColor: yellow,
           textTheme: TextTheme(
               headline1: TextStyle(
             fontSize: 25.0,
             color: yellow,
             fontWeight: FontWeight.w900,
             fontStyle: FontStyle.italic,
-          ))),
+          )),
+          colorScheme: ColorScheme.fromSwatch().copyWith(secondary: yellow)),
       initialRoute: '/home',
       routes: {
         '/home': (BuildContext context) => HomeScreen(),

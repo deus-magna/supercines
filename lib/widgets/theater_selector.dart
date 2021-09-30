@@ -4,7 +4,7 @@ import 'package:supercines/framework/framework.dart';
 
 class TheaterSelector extends StatelessWidget {
   const TheaterSelector({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

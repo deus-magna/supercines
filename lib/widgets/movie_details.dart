@@ -9,11 +9,11 @@ import 'package:supercines/utils/utils.dart' as utils;
 
 class MovieDetails extends StatelessWidget {
   const MovieDetails({
-    Key key,
-    @required this.genres,
-    @required this.actors,
-    @required this.movie,
-    @required this.opacity,
+    Key? key,
+    required this.genres,
+    required this.actors,
+    required this.movie,
+    required this.opacity,
   }) : super(key: key);
 
   final List<Genre> genres;
@@ -161,7 +161,7 @@ class MovieDetails extends StatelessWidget {
         height: MediaQuery.of(context).size.height * 0.07389,
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Text(
-          movie.title.toUpperCase(),
+          movie.title!.toUpperCase(),
           textAlign: TextAlign.center,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,

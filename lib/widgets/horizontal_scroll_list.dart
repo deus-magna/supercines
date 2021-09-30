@@ -8,12 +8,12 @@ class HorizontalScrollList extends StatelessWidget {
   final int itemCount;
   final IndexedWidgetBuilder itemBuilder;
 
-
   const HorizontalScrollList({
-    Key key,
+    Key? key,
     this.height = 90.0,
     this.backgroundColor = Colors.transparent,
-    @required this.itemCount, @required this.itemBuilder,
+    required this.itemCount,
+    required this.itemBuilder,
   }) : super(key: key);
 
   @override

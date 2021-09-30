@@ -7,7 +7,7 @@ class CardSwiper extends StatelessWidget {
   final List<Movie> movies;
   final Function(int) onIndexChanged;
 
-  CardSwiper({@required this.movies, @required this.onIndexChanged});
+  CardSwiper({required this.movies, required this.onIndexChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class CardSwiper extends StatelessWidget {
         onIndexChanged: onIndexChanged,
         itemBuilder: (BuildContext context, int index) {
           return Hero(
-            tag: movies[index].id,
+            tag: movies[index].id ?? 0,
             child: ClipRRect(
                 borderRadius: BorderRadius.circular(20.0),
                 child: FadeInImage(

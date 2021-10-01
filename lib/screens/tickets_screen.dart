@@ -174,19 +174,18 @@ class _TicketsScreenState extends State<TicketsScreen> {
 
   Widget _buildSeatsArea(Size size) {
     return TranslateAnimation(
-      duration: Duration(milliseconds: 1500),
-      child: Container(
+      duration: const Duration(milliseconds: 1500),
+      child: SizedBox(
         height: size.height * 0.3,
         child: MovieSeats(
           seats: listOfSeatsRow,
-          onItemSelected: (row, index) => _checkReservedSeats(row, index),
+          onItemSelected: _checkReservedSeats,
         ),
       ),
     );
   }
 
-  _checkReservedSeats(int row, int index) {
-    print('ROW: $row, INDEX: $index');
+  void _checkReservedSeats(int row, int index) {
     setState(() {
       if (!listOfSeatsRow[row].reservedSeats.contains(index + 1)) {
         if (listOfSeatsRow[row].selectedSeats.contains(index + 1)) {

@@ -16,9 +16,10 @@ import 'package:supercines/widgets/screen_painter.dart';
 import 'package:supercines/widgets/time_button.dart';
 
 class TicketsScreen extends StatefulWidget {
+  const TicketsScreen({Key? key, this.movie}) : super(key: key);
+
   final Movie? movie;
 
-  const TicketsScreen({Key? key, this.movie}) : super(key: key);
   @override
   _TicketsScreenState createState() => _TicketsScreenState();
 }
@@ -30,49 +31,48 @@ class _TicketsScreenState extends State<TicketsScreen> {
   int? selectedCalendarIndex;
   int? selectedPriceIndex;
   List<SeatsRow> listOfSeatsRow = utils.getMockSeatsList();
-  double total = 0.0;
+  double total = 0;
 
   @override
   Widget build(BuildContext context) {
-    _movie = (ModalRoute.of(context)!.settings.arguments != null
-        ? ModalRoute.of(context)!.settings.arguments as Movie
-        : widget.movie)!;
+    _movie = ModalRoute.of(context)!.settings.arguments != null
+        ? ModalRoute.of(context)!.settings.arguments as Movie?
+        : widget.movie;
 
     return Scaffold(
       body: Stack(
         children: [
-          BackgroundImage(
+          const BackgroundImage(
             color: backgroundBlue,
-            backgroundImage: null,
-            animatedOpacity: 1.0,
+            animatedOpacity: 1,
           ),
           _buildMovieContent(context),
           BottomItem(
-            child: Icon(
+            size: 36,
+            alignment: MainAxisAlignment.start,
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Icon(
               Icons.arrow_back,
               color: Colors.white,
               size: 36,
             ),
-            size: 36,
-            alignment: MainAxisAlignment.start,
-            onPressed: () => Navigator.of(context).pop(),
           ),
           BottomItem(
+            size: 48,
+            alignment: MainAxisAlignment.center,
             child: Text(
-              "\$$total",
-              style: TextStyle(
+              '\$$total',
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
                 fontSize: 25,
               ),
             ),
-            size: 48,
-            alignment: MainAxisAlignment.center,
           ),
           BottomItem(
-            child: _buildPayButton(context),
             size: 36,
             alignment: MainAxisAlignment.end,
+            child: _buildPayButton(context),
           ),
         ],
       ),
@@ -80,21 +80,21 @@ class _TicketsScreenState extends State<TicketsScreen> {
   }
 
   Widget _buildPayButton(BuildContext context) {
-    final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
+    final raisedButtonStyle = ElevatedButton.styleFrom(
       onPrimary: Colors.black87,
       primary: yellow,
-      minimumSize: Size(88, 36),
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      minimumSize: const Size(88, 36),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(8.0)),
       ),
     );
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height * 0.062,
       child: ElevatedButton(
         style: raisedButtonStyle,
         onPressed: () => Navigator.of(context).pop(),
-        child: Text('PAY',
+        child: const Text('PAY',
             style: TextStyle(
                 color: Colors.black,
                 fontSize: 18,
@@ -106,20 +106,19 @@ class _TicketsScreenState extends State<TicketsScreen> {
   SafeArea _buildMovieContent(BuildContext context) {
     return SafeArea(
       child: Container(
-        margin: EdgeInsets.only(top: 5.0),
+        margin: const EdgeInsets.only(top: 5.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             CustomAppBar(avatar: _avatar),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             PosterImage(movie: _movie!),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             _buildHorizontalCalendarView(),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             _buildHorizontalPriceView(),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             _buildCinemaScreen(),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             _buildSeatsArea(MediaQuery.of(context).size),
           ],
         ),
@@ -135,14 +134,11 @@ class _TicketsScreenState extends State<TicketsScreen> {
       itemCount: data.length,
       itemBuilder: (BuildContext context, int index) {
         return Padding(
-          padding: EdgeInsets.symmetric(horizontal: 7.5, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 7.5, vertical: 8),
           child: TimeButton(
             timeData: data[index],
-            selected: selectedPriceIndex == index ? true : false,
-            onPressed: () {
-              print('Selected out');
-              setState(() => selectedPriceIndex = index);
-            },
+            selected: selectedPriceIndex == index,
+            onPressed: () => setState(() => selectedPriceIndex = index),
           ),
         );
       },
@@ -154,18 +150,15 @@ class _TicketsScreenState extends State<TicketsScreen> {
 
     return HorizontalScrollList(
       height: 85,
-      backgroundColor: Color(0xFF021333),
+      backgroundColor: const Color(0xFF021333),
       itemCount: data.length,
       itemBuilder: (BuildContext context, int index) {
         return Padding(
-          padding: EdgeInsets.symmetric(horizontal: 7.5, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 7.5, vertical: 8),
           child: CalendarButton(
             calendar: data[index],
-            selected: selectedCalendarIndex == index ? true : false,
-            onPressed: () {
-              print('Selected out');
-              setState(() => selectedCalendarIndex = index);
-            },
+            selected: selectedCalendarIndex == index,
+            onPressed: () => setState(() => selectedCalendarIndex = index),
           ),
         );
       },
@@ -201,11 +194,11 @@ class _TicketsScreenState extends State<TicketsScreen> {
 
   Widget _buildCinemaScreen() {
     return TranslateAnimation(
-      duration: Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 1000),
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 20.0),
+        margin: const EdgeInsets.symmetric(horizontal: 20),
         child: CustomPaint(
-          size: Size(double.infinity, 30),
+          size: const Size(double.infinity, 30),
           painter: ScreenPainter(),
         ),
       ),

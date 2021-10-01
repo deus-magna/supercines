@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Movie> movies = [];
   List<Genre> genres = [];
   List<Actor> actors = [];
-  late Movie selectedMovie;
+  Movie? selectedMovie;
   late bool _isLoading;
   double _opacity = 0.0;
 
@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
     selectedMovie = movies.first;
 
     genres = await moviesService.getGenreList();
-    actors = await moviesService.getCast(selectedMovie.id.toString());
+    actors = await moviesService.getCast(selectedMovie!.id.toString());
     _opacity = 1.0;
     setState(() => _isLoading = false);
   }
@@ -51,7 +51,8 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Stack(
         children: [
           BackgroundImage(
-            backgroundImage: selectedMovie.getPosterImg() ?? null,
+            backgroundImage:
+                selectedMovie != null ? selectedMovie!.getPosterImg() : null,
             opacity: 0.75,
             animatedOpacity: _opacity,
           ),
@@ -93,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 : MovieDetails(
                     genres: genres,
                     actors: actors,
-                    movie: selectedMovie,
+                    movie: selectedMovie!,
                     opacity: _opacity,
                   ),
             _cardsSwiper(),
@@ -132,6 +133,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   _getActors() async {
-    actors = await moviesService.getCast(selectedMovie.id.toString());
+    actors = await moviesService.getCast(selectedMovie!.id.toString());
   }
 }

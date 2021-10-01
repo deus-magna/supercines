@@ -26,9 +26,9 @@ class TicketsScreen extends StatefulWidget {
 class _TicketsScreenState extends State<TicketsScreen> {
   final _avatar =
       'https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg';
-  late Movie _movie;
-  late int selectedCalendarIndex;
-  late int selectedPriceIndex;
+  Movie? _movie;
+  int? selectedCalendarIndex;
+  int? selectedPriceIndex;
   List<SeatsRow> listOfSeatsRow = utils.getMockSeatsList();
   double total = 0.0;
 
@@ -112,7 +112,7 @@ class _TicketsScreenState extends State<TicketsScreen> {
           children: <Widget>[
             CustomAppBar(avatar: _avatar),
             SizedBox(height: 10),
-            PosterImage(movie: _movie),
+            PosterImage(movie: _movie!),
             SizedBox(height: 10),
             _buildHorizontalCalendarView(),
             SizedBox(height: 10),

@@ -13,8 +13,8 @@ dependencies:
     sdk: flutter
 
   card_swiper: ^1.0.4
-  http: ^0.12.0+2
-  google_fonts: ^1.1.0
+  http: ^0.13.3
+  google_fonts: ^2.1.0
 
 dev_dependencies:
   flutter_test:

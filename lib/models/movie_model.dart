@@ -61,7 +61,7 @@ class Movie {
     releaseDate = json['release_date'];
   }
 
-  getPosterImg() {
+  String getPosterImg() {
     if (posterPath == null) {
       return 'http://www.independentmediators.co.uk/wp-content/uploads/2016/02/placeholder-image.jpg';
     } else {
@@ -69,7 +69,7 @@ class Movie {
     }
   }
 
-  getYear() {
+  String getYear() {
     return releaseDate == null ? '--' : releaseDate!.substring(0, 4);
   }
 }

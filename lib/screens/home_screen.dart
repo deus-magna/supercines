@@ -11,6 +11,8 @@ import 'package:supercines/widgets/custom_app_bar.dart';
 import 'package:supercines/widgets/movie_details.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -24,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Actor> actors = [];
   Movie? selectedMovie;
   late bool _isLoading;
-  double _opacity = 0.0;
+  double _opacity = 0;
 
   @override
   void initState() {
@@ -32,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _getMovies();
   }
 
-  void _getMovies() async {
+  Future<void> _getMovies() async {
     setState(() => _isLoading = true);
     movies = await moviesService.getEnCines();
     selectedMovie = movies.first;
@@ -57,23 +59,23 @@ class _HomeScreenState extends State<HomeScreen> {
             animatedOpacity: _opacity,
           ),
           _buildMovieContent(context, size),
-          BottomItem(
+          const BottomItem(
+            size: 36,
+            alignment: MainAxisAlignment.start,
             child: Icon(
               Icons.arrow_back,
               color: Colors.white,
               size: 36,
             ),
-            size: 36,
-            alignment: MainAxisAlignment.start,
           ),
-          BottomItem(
+          const BottomItem(
+            size: 48,
+            alignment: MainAxisAlignment.center,
             child: Icon(
               CustomIcons.popcorn,
               color: Colors.white,
               size: 48,
             ),
-            size: 48,
-            alignment: MainAxisAlignment.center,
           ),
         ],
       ),
@@ -83,20 +85,20 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildMovieContent(BuildContext context, Size size) {
     return SafeArea(
       child: Container(
-        margin: EdgeInsets.only(top: 5.0),
+        margin: const EdgeInsets.only(top: 5),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             CustomAppBar(avatar: _avatar),
             SizedBox(height: size.height * 0.17),
-            _isLoading
-                ? Container()
-                : MovieDetails(
-                    genres: genres,
-                    actors: actors,
-                    movie: selectedMovie!,
-                    opacity: _opacity,
-                  ),
+            if (_isLoading)
+              const SizedBox.shrink()
+            else
+              MovieDetails(
+                genres: genres,
+                actors: actors,
+                movie: selectedMovie!,
+                opacity: _opacity,
+              ),
             _cardsSwiper(),
           ],
         ),
@@ -106,8 +108,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _cardsSwiper() {
     return _isLoading
-        ? Container(
-            height: 400.0,
+        ? const SizedBox(
+            height: 400,
             child: Center(
               child: CircularProgressIndicator(),
             ),
@@ -118,12 +120,12 @@ class _HomeScreenState extends State<HomeScreen> {
           );
   }
 
-  _onMovieChanged(index) async {
+  Future<void> _onMovieChanged(int index) async {
     setState(() {
       _opacity = 0.0;
     });
 
-    await Future.delayed(Duration(milliseconds: 700));
+    await Future.delayed(const Duration(milliseconds: 700));
 
     setState(() {
       selectedMovie = movies[index];
@@ -132,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  _getActors() async {
+  Future<void> _getActors() async {
     actors = await moviesService.getCast(selectedMovie!.id.toString());
   }
 }

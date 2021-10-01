@@ -13,15 +13,11 @@ class GenreModel {
   final List<Genre> genres;
 
   factory GenreModel.fromJson(Map<String, dynamic> json) => GenreModel(
-        genres: json["genres"] == null
-            ? null
-            : List<Genre>.from(json["genres"].map((x) => Genre.fromJson(x))),
+        genres: List<Genre>.from(json["genres"].map((x) => Genre.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "genres": genres == null
-            ? null
-            : List<dynamic>.from(genres.map((x) => x.toJson())),
+        "genres": List<dynamic>.from(genres.map((x) => x.toJson())),
       };
 }
 

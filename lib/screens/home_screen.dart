@@ -125,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
       _opacity = 0.0;
     });
 
-    await Future.delayed(const Duration(milliseconds: 700));
+    await Future<void>.delayed(const Duration(milliseconds: 700));
 
     setState(() {
       selectedMovie = movies[index];

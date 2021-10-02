@@ -4,8 +4,8 @@ import 'package:supercines/models/actores_model.dart';
 import 'package:supercines/models/genre_model.dart';
 import 'package:supercines/models/movie_model.dart';
 import 'package:supercines/screens/tickets_screen.dart';
-import 'package:supercines/widgets/trailer_button.dart';
 import 'package:supercines/utils/utils.dart' as utils;
+import 'package:supercines/widgets/trailer_button.dart';
 
 class MovieDetails extends StatelessWidget {
   const MovieDetails({
@@ -21,7 +21,7 @@ class MovieDetails extends StatelessWidget {
   final Movie movie;
   final double opacity;
 
-  final Duration _duration = const Duration(milliseconds: 800);
+  static const _duration = Duration(milliseconds: 800);
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +29,13 @@ class MovieDetails extends StatelessWidget {
       child: Column(
         children: [
           _buildActions(),
-          SizedBox(height: 5.0),
+          const SizedBox(height: 5),
           _buildMovieTitle(context),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10),
           _buildMovieDetails(),
-          SizedBox(height: 15.0),
+          const SizedBox(height: 15),
           _buildBuyTicketsButton(context),
-          SizedBox(height: 28.0),
+          const SizedBox(height: 28),
           _buildMovieCast(),
         ],
       ),
@@ -54,7 +54,7 @@ class MovieDetails extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
           maxLines: 1,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 12,
           ),
@@ -65,11 +65,11 @@ class MovieDetails extends StatelessWidget {
 
   // Crea el boton que se utiliza para comprar tickets para ver la pelicula.
   Widget _buildBuyTicketsButton(BuildContext context) {
-    final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
+    final raisedButtonStyle = ElevatedButton.styleFrom(
       onPrimary: Colors.black87,
       primary: yellow,
-      minimumSize: Size(88, 36),
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      minimumSize: const Size(88, 36),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(8.0)),
       ),
@@ -77,10 +77,10 @@ class MovieDetails extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: MediaQuery.of(context).size.height * 0.062,
-      margin: EdgeInsets.symmetric(horizontal: 60),
+      margin: const EdgeInsets.symmetric(horizontal: 60),
       child: ElevatedButton(
         style: raisedButtonStyle,
-        child: Text(
+        child: const Text(
           'BUY TICKETS',
           style: TextStyle(
             color: Colors.black,
@@ -93,8 +93,8 @@ class MovieDetails extends StatelessWidget {
     );
   }
 
-  _pushMovieDetail(BuildContext context) {
-    Navigator.of(context).push(
+  void _pushMovieDetail(BuildContext context) {
+    Navigator.of(context).push<void>(
       PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) {
           return FadeTransition(
@@ -104,7 +104,7 @@ class MovieDetails extends StatelessWidget {
             ),
           );
         },
-        transitionDuration: Duration(milliseconds: 800),
+        transitionDuration: const Duration(milliseconds: 800),
       ),
     );
   }
@@ -121,12 +121,12 @@ class MovieDetails extends StatelessWidget {
           children: [
             Text(
               movie.getYear(),
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 14,
               ),
             ),
-            Text(
+            const Text(
               '   ⬤   ',
               style: TextStyle(
                 color: yellow,
@@ -138,7 +138,7 @@ class MovieDetails extends StatelessWidget {
                 utils.getGenresFromId(movie.genreIds, genres),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 14,
                 ),
@@ -165,7 +165,7 @@ class MovieDetails extends StatelessWidget {
           textAlign: TextAlign.center,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(
+          style: const TextStyle(
               color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
         ),
       ),
@@ -175,7 +175,7 @@ class MovieDetails extends StatelessWidget {
   Row _buildActions() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
+      children: const [
         TrailerButton(),
         Text(
           'ABOUT MOVIE',

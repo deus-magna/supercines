@@ -13,9 +13,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           brightness: Brightness.light,
-          textTheme: TextTheme(
+          textTheme: const TextTheme(
               headline1: TextStyle(
-            fontSize: 25.0,
+            fontSize: 25,
             color: yellow,
             fontWeight: FontWeight.w900,
             fontStyle: FontStyle.italic,
@@ -23,8 +23,8 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSwatch().copyWith(secondary: yellow)),
       initialRoute: '/home',
       routes: {
-        '/home': (BuildContext context) => HomeScreen(),
-        '/tickets': (BuildContext context) => TicketsScreen(),
+        '/home': (BuildContext context) => const HomeScreen(),
+        '/tickets': (BuildContext context) => const TicketsScreen(),
       },
     );
   }

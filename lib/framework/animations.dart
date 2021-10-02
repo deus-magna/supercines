@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 
 class TranslateAnimation extends StatelessWidget {
-  final Widget child;
-  final Duration duration;
-  final double offset;
-  final Curve curve;
-  final Axis offsetDirection;
-
   const TranslateAnimation({
     Key? key,
     this.duration = const Duration(milliseconds: 800),
@@ -16,11 +10,16 @@ class TranslateAnimation extends StatelessWidget {
     this.offsetDirection = Axis.vertical,
   }) : super(key: key);
 
+  final Widget child;
+  final Duration duration;
+  final double offset;
+  final Curve curve;
+  final Axis offsetDirection;
+
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder(
       duration: duration,
-      child: child,
       curve: curve,
       tween: Tween(begin: 1.0, end: 0.0),
       builder: (context, double value, child) {
@@ -30,17 +29,12 @@ class TranslateAnimation extends StatelessWidget {
                 : Offset(0, value * offset),
             child: child);
       },
+      child: child,
     );
   }
 }
 
 class ScaleAnimation extends StatelessWidget {
-  final Widget child;
-  final Duration duration;
-  final double initScale;
-  final double finalScale;
-  final Curve curve;
-
   const ScaleAnimation({
     Key? key,
     this.duration = const Duration(milliseconds: 800),
@@ -50,11 +44,16 @@ class ScaleAnimation extends StatelessWidget {
     this.finalScale = 1.0,
   }) : super(key: key);
 
+  final Widget child;
+  final Duration duration;
+  final double initScale;
+  final double finalScale;
+  final Curve curve;
+
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder(
       duration: duration,
-      child: child,
       curve: curve,
       tween: Tween(begin: initScale, end: finalScale),
       builder: (context, double value, child) {
@@ -63,6 +62,7 @@ class ScaleAnimation extends StatelessWidget {
           child: child,
         );
       },
+      child: child,
     );
   }
 }

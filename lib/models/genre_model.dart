@@ -1,23 +1,21 @@
 import 'dart:convert';
 
 GenreModel genreModelFromJson(String str) =>
-    GenreModel.fromJson(json.decode(str));
+    GenreModel.fromJson(json.decode(str) as Map<String, dynamic>);
 
 String genreModelToJson(GenreModel data) => json.encode(data.toJson());
 
 class GenreModel {
-  GenreModel({
-    required this.genres,
-  });
+  GenreModel({required this.genres});
+
+  factory GenreModel.fromJson(Map<String, dynamic> json) => GenreModel(
+        genres: List<Genre>.from(json['genres'].map((x) => Genre.fromJson(x))),
+      );
 
   final List<Genre> genres;
 
-  factory GenreModel.fromJson(Map<String, dynamic> json) => GenreModel(
-        genres: List<Genre>.from(json["genres"].map((x) => Genre.fromJson(x))),
-      );
-
   Map<String, dynamic> toJson() => {
-        "genres": List<dynamic>.from(genres.map((x) => x.toJson())),
+        'genres': List<dynamic>.from(genres.map((x) => x.toJson())),
       };
 }
 
@@ -27,16 +25,16 @@ class Genre {
     required this.name,
   });
 
+  factory Genre.fromJson(Map<String, dynamic> json) => Genre(
+        id: json['id'] as int,
+        name: json['name'] as String,
+      );
+
   final int id;
   final String name;
 
-  factory Genre.fromJson(Map<String, dynamic> json) => Genre(
-        id: json["id"] == null ? null : json["id"],
-        name: json["name"] == null ? null : json["name"],
-      );
-
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
+        'id': id,
+        'name': name,
       };
 }

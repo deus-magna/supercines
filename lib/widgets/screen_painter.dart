@@ -1,30 +1,31 @@
-import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
+
+import 'package:flutter/material.dart';
 
 class ScreenPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    Paint line = Paint()
+    final line = Paint()
       ..color = Colors.white.withOpacity(0.28)
       ..strokeWidth = 3;
-    canvas.drawLine(Offset(20, 0), Offset(size.width - 20, 0), line);
+    canvas.drawLine(const Offset(20, 0), Offset(size.width - 20, 0), line);
 
     final paint = Paint()
       ..shader = ui.Gradient.linear(
-        Offset(0, 0),
+        Offset.zero,
         Offset(0, size.height),
         [
-          Color(0xFFC4C4C4).withOpacity(0.25),
+          const Color(0xFFC4C4C4).withOpacity(0.25),
           Colors.transparent,
         ],
       );
 
-    var path = Path();
-    path.lineTo(20, 0);
-    path.lineTo(0, size.height);
-    path.lineTo(size.width, size.height);
-    path.lineTo(size.width - 20, 0);
-    path.close();
+    final path = Path()
+      ..lineTo(20, 0)
+      ..lineTo(0, size.height)
+      ..lineTo(size.width, size.height)
+      ..lineTo(size.width - 20, 0)
+      ..close();
     canvas.drawPath(path, paint);
   }
 

@@ -10,9 +10,9 @@ class TheaterSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 12.0),
+      margin: const EdgeInsets.symmetric(vertical: 12.0),
       child: Row(
-        children: [
+        children: const [
           Icon(
             CustomIcons.location,
             color: blue,

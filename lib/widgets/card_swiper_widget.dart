@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:supercines/models/movie_model.dart';
 
 class CardSwiper extends StatelessWidget {
+  const CardSwiper(
+      {Key? key, required this.movies, required this.onIndexChanged})
+      : super(key: key);
   final List<Movie> movies;
   final Function(int) onIndexChanged;
-
-  CardSwiper({required this.movies, required this.onIndexChanged});
-
   @override
   Widget build(BuildContext context) {
     final _screenSize = MediaQuery.of(context).size;

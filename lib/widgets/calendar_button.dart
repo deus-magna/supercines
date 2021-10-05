@@ -3,16 +3,16 @@ import 'package:supercines/framework/framework.dart';
 import 'package:supercines/models/calendar_data_model.dart';
 
 class CalendarButton extends StatelessWidget {
-  final Calendar calendar;
-  final Function()? onPressed;
-  final bool selected;
-
   const CalendarButton({
+    Key? key,
     required this.calendar,
     this.onPressed,
     this.selected = false,
-  });
+  }) : super(key: key);
 
+  final Calendar calendar;
+  final Function()? onPressed;
+  final bool selected;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -37,16 +37,17 @@ class CalendarButton extends StatelessWidget {
           '${calendar.number}',
           textAlign: TextAlign.center,
           style: selected
-              ? TextStyle(fontSize: 25, color: Colors.black)
-              : TextStyle(fontSize: 25, color: Colors.white),
+              ? const TextStyle(fontSize: 25, color: Colors.black)
+              : const TextStyle(fontSize: 25, color: Colors.white),
         ),
-        SizedBox(height: 3),
+        const SizedBox(height: 3),
         Text(
-          '${calendar.title}',
+          calendar.title,
           textAlign: TextAlign.center,
           style: selected
               ? TextStyle(
-                  fontSize: 15, color: Color(0xFF021333).withOpacity(0.45))
+                  fontSize: 15,
+                  color: const Color(0xFF021333).withOpacity(0.45))
               : TextStyle(fontSize: 15, color: Colors.white.withOpacity(0.45)),
         ),
       ],

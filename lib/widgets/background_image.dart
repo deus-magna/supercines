@@ -18,15 +18,13 @@ class BackgroundImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Container(
-      child: Stack(
-        children: [
-          backgroundImage == null ? Container() : _buildAnimatedOpacity(),
-          _buildCoverColor(color, opacity),
-          _buildGradientRect(size),
-          _buildBottomGradientRect(size),
-        ],
-      ),
+    return Stack(
+      children: [
+        backgroundImage == null ? Container() : _buildAnimatedOpacity(),
+        _buildCoverColor(color, opacity),
+        _buildGradientRect(size),
+        _buildBottomGradientRect(size),
+      ],
     );
   }
 
@@ -35,7 +33,7 @@ class BackgroundImage extends StatelessWidget {
       opacity: animatedOpacity,
       duration: Duration(milliseconds: animatedOpacity == 0.0 ? 750 : 500),
       curve: animatedOpacity == 0.0 ? Curves.easeOut : Curves.easeIn,
-      child: Container(
+      child: SizedBox(
         height: double.infinity,
         child: Image(
           image: NetworkImage(backgroundImage!),

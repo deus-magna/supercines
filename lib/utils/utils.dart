@@ -7,6 +7,7 @@ import 'package:supercines/models/time_data_model.dart';
 String getActors(List<Actor> actors) {
   var actorsString = '';
   for (var i = 0; i < 3; i++) {
+    // ignore: use_string_buffers
     actorsString = '$actorsString ${actors[i].name!.toUpperCase()},';
   }
   return actorsString.substring(0, actorsString.length - 1);

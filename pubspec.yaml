@@ -9,13 +9,12 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
-
   card_swiper: ^1.0.4
   http: ^0.13.3
   google_fonts: ^2.1.0
-
+  flutter:
+    sdk: flutter
+    
 dev_dependencies:
   flutter_test:
     sdk: flutter

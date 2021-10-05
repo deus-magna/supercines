@@ -5,7 +5,7 @@ import 'package:supercines/models/seats_row_model.dart';
 import 'package:supercines/models/time_data_model.dart';
 
 String getActors(List<Actor> actors) {
-  String actorsString = '';
+  var actorsString = '';
   for (var i = 0; i < 3; i++) {
     actorsString = '$actorsString ${actors[i].name!.toUpperCase()},';
   }
@@ -13,9 +13,9 @@ String getActors(List<Actor> actors) {
 }
 
 String getGenresFromId(List<int>? genreIds, List<Genre>? genres) {
-  String genresString = '';
-  for (int id in genreIds!) {
-    for (Genre genre in genres!) {
+  var genresString = '';
+  for (final id in genreIds!) {
+    for (final genre in genres!) {
       if (id == genre.id) {
         genresString = '$genresString ${genre.name},';
       }
@@ -38,10 +38,10 @@ List<Calendar> getMockCalendar() {
 
 List<TimeData> getMockTimeAndPrice() {
   return [
-    TimeData('17:25', 'FROM \$3,75'),
-    TimeData('19:55', 'FROM \$3,75'),
-    TimeData('20:25', 'FROM \$3,75'),
-    TimeData('21:05', 'FROM \$3,75')
+    TimeData('17:25', r'FROM $3,75'),
+    TimeData('19:55', r'FROM $3,75'),
+    TimeData('20:25', r'FROM $3,75'),
+    TimeData('21:05', r'FROM $3,75')
   ];
 }
 

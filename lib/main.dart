@@ -3,9 +3,11 @@ import 'package:supercines/framework/framework.dart';
 import 'package:supercines/screens/home_screen.dart';
 import 'package:supercines/screens/tickets_screen.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

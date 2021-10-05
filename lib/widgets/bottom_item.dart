@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 
 class BottomItem extends StatelessWidget {
-  final double size;
-  final MainAxisAlignment alignment;
-  final Function()? onPressed;
-  final Widget child;
-
   const BottomItem({
     Key? key,
     required this.size,
@@ -13,6 +8,11 @@ class BottomItem extends StatelessWidget {
     this.onPressed,
     required this.child,
   }) : super(key: key);
+
+  final double size;
+  final MainAxisAlignment alignment;
+  final Function()? onPressed;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +22,12 @@ class BottomItem extends StatelessWidget {
       bottom: 0,
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
           child: GestureDetector(
             onTap: onPressed,
-            child: Container(
+            child: SizedBox(
               height: 48,
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: alignment,
                 children: [
                   child,

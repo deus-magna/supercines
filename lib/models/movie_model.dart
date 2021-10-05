@@ -1,32 +1,17 @@
 class Movies {
-  List<Movie> items = [];
-
   Movies();
 
   Movies.fromJsonList(List<dynamic> jsonList) {
-    for (var item in jsonList) {
-      final pelicula = new Movie.fromJsonMap(item);
+    for (final item in jsonList) {
+      final pelicula = Movie.fromJsonMap(item);
       items.add(pelicula);
     }
   }
+
+  List<Movie> items = [];
 }
 
 class Movie {
-  double? popularity;
-  int? voteCount;
-  bool? video;
-  String? posterPath;
-  int? id;
-  bool? adult;
-  String? backdropPath;
-  String? originalLanguage;
-  String? originalTitle;
-  List<int>? genreIds;
-  String? title;
-  double? voteAverage;
-  String? overview;
-  String? releaseDate;
-
   Movie({
     this.voteCount,
     this.popularity,
@@ -60,6 +45,21 @@ class Movie {
     overview = json['overview'];
     releaseDate = json['release_date'];
   }
+
+  double? popularity;
+  int? voteCount;
+  bool? video;
+  String? posterPath;
+  int? id;
+  bool? adult;
+  String? backdropPath;
+  String? originalLanguage;
+  String? originalTitle;
+  List<int>? genreIds;
+  String? title;
+  double? voteAverage;
+  String? overview;
+  String? releaseDate;
 
   String getPosterImg() {
     if (posterPath == null) {

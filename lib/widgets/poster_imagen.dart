@@ -48,7 +48,7 @@ class PosterImage extends StatelessWidget {
   Widget _buildImageContainer(Size size) {
     return Hero(
       tag: _movie.id ?? 0,
-      child: Container(
+      child: SizedBox(
         width: 54,
         height: size.height * 0.085,
         child: ClipRRect(

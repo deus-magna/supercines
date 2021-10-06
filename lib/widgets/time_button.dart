@@ -3,15 +3,16 @@ import 'package:supercines/framework/framework.dart';
 import 'package:supercines/models/time_data_model.dart';
 
 class TimeButton extends StatelessWidget {
-  final TimeData timeData;
-  final Function()? onPressed;
-  final bool selected;
-
   const TimeButton({
+    Key? key,
     required this.timeData,
     this.onPressed,
     this.selected = false,
-  });
+  }) : super(key: key);
+
+  final TimeData timeData;
+  final Function()? onPressed;
+  final bool selected;
 
   @override
   Widget build(BuildContext context) {
@@ -34,15 +35,15 @@ class TimeButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          '${timeData.date}',
+          timeData.date,
           textAlign: TextAlign.center,
           style: selected
-              ? TextStyle(fontSize: 25, color: yellow)
+              ? const TextStyle(fontSize: 25, color: yellow)
               : TextStyle(fontSize: 25, color: Colors.white.withOpacity(0.50)),
         ),
-        SizedBox(height: 3),
+        const SizedBox(height: 3),
         Text(
-          '${timeData.price}',
+          timeData.price,
           textAlign: TextAlign.center,
           style: selected
               ? TextStyle(fontSize: 15, color: yellow.withOpacity(0.45))

@@ -2,17 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:supercines/framework/framework.dart';
 
 class MovieSeat extends StatelessWidget {
-  final double size;
-  final EdgeInsetsGeometry margin;
-  final Color backgroundColor;
-  final Color borderColor;
-  final Color reservedColor;
-  final Color selectedColor;
-  final double borderWidth;
-  final bool reserved;
-  final bool selected;
-  final Function() onSelected;
-
   const MovieSeat({
     Key? key,
     this.size = 27,
@@ -26,6 +15,18 @@ class MovieSeat extends StatelessWidget {
     this.selectedColor = yellow,
     required this.onSelected,
   }) : super(key: key);
+
+  final double size;
+  final EdgeInsetsGeometry margin;
+  final Color backgroundColor;
+  final Color borderColor;
+  final Color reservedColor;
+  final Color selectedColor;
+  final double borderWidth;
+  final bool reserved;
+  final bool selected;
+  final Function() onSelected;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

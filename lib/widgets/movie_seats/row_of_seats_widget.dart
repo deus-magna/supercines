@@ -21,7 +21,7 @@ class RowOfSeats extends StatelessWidget {
         (index) => (index == 4)
             ? MovieSeat(
                 size: MediaQuery.of(context).size.width * 0.072,
-                margin: EdgeInsets.only(left: 8, right: 25),
+                margin: const EdgeInsets.only(left: 8, right: 25),
                 reserved: seats.reservedSeats.contains(index + 1),
                 selected: seats.selectedSeats.contains(index + 1),
                 onSelected: () {

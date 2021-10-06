@@ -15,13 +15,13 @@ class TrailerButton extends StatelessWidget {
           width: 27,
           decoration: BoxDecoration(
               color: yellow, borderRadius: BorderRadius.circular(8)),
-          child: Icon(
+          child: const Icon(
             Icons.play_arrow,
             color: Colors.black,
           ),
         ),
-        SizedBox(width: 8.0),
-        Text(
+        const SizedBox(width: 8),
+        const Text(
           'VIEW TRAILER',
           style: TextStyle(color: yellow, fontSize: 12),
         ),

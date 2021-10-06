@@ -14,18 +14,17 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Row(
-        mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(
+          const Icon(
             CustomIcons.menu,
             color: Colors.white,
           ),
           Column(
             children: [
               Text('SUPERCINES', style: Theme.of(context).textTheme.headline1),
-              TheaterSelector()
+              const TheaterSelector()
             ],
           ),
           CircleAvatar(

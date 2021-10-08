@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_dynamic_calls
+
 class Movies {
   Movies();
 
@@ -39,7 +41,7 @@ class Movie {
     backdropPath = json['backdrop_path'];
     originalLanguage = json['original_language'];
     originalTitle = json['original_title'];
-    genreIds = json['genre_ids'];
+    genreIds = json['genre_ids'].cast<int>();
     title = json['title'];
     voteAverage = (json['vote_average'] as double?)! / 1;
     overview = json['overview'];

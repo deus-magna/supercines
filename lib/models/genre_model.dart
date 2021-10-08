@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_dynamic_calls
+
 import 'dart:convert';
 
 GenreModel genreModelFromJson(String str) =>
@@ -8,12 +10,9 @@ String genreModelToJson(GenreModel data) => json.encode(data.toJson());
 class GenreModel {
   GenreModel({required this.genres});
 
-  factory GenreModel.fromJson(Map<String, dynamic> json) {
-    final genres = json['genres'] as List<Map<String, dynamic>>;
-    return GenreModel(
-      genres: List<Genre>.from(genres.map((x) => Genre.fromJson(x))),
-    );
-  }
+  factory GenreModel.fromJson(Map<String, dynamic> json) => GenreModel(
+        genres: List<Genre>.from(json['genres'].map((x) => Genre.fromJson(x))),
+      );
 
   final List<Genre> genres;
 

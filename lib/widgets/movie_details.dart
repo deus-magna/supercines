@@ -25,20 +25,18 @@ class MovieDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          _buildActions(),
-          const SizedBox(height: 5),
-          _buildMovieTitle(context),
-          const SizedBox(height: 10),
-          _buildMovieDetails(),
-          const SizedBox(height: 15),
-          _buildBuyTicketsButton(context),
-          const SizedBox(height: 28),
-          _buildMovieCast(),
-        ],
-      ),
+    return Column(
+      children: [
+        _buildActions(),
+        const SizedBox(height: 5),
+        _buildMovieTitle(context),
+        const SizedBox(height: 10),
+        _buildMovieDetails(),
+        const SizedBox(height: 15),
+        _buildBuyTicketsButton(context),
+        const SizedBox(height: 28),
+        _buildMovieCast(),
+      ],
     );
   }
 
@@ -71,7 +69,7 @@ class MovieDetails extends StatelessWidget {
       minimumSize: const Size(88, 36),
       padding: const EdgeInsets.symmetric(horizontal: 16),
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        borderRadius: BorderRadius.all(Radius.circular(8)),
       ),
     );
     return Container(
@@ -159,7 +157,7 @@ class MovieDetails extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         height: MediaQuery.of(context).size.height * 0.07389,
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Text(
           movie.title!.toUpperCase(),
           textAlign: TextAlign.center,

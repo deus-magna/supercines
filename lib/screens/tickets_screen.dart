@@ -86,7 +86,7 @@ class _TicketsScreenState extends State<TicketsScreen> {
       minimumSize: const Size(88, 36),
       padding: const EdgeInsets.symmetric(horizontal: 16),
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        borderRadius: BorderRadius.all(Radius.circular(8)),
       ),
     );
     return SizedBox(
@@ -106,7 +106,7 @@ class _TicketsScreenState extends State<TicketsScreen> {
   SafeArea _buildMovieContent(BuildContext context) {
     return SafeArea(
       child: Container(
-        margin: const EdgeInsets.only(top: 5.0),
+        margin: const EdgeInsets.only(top: 5),
         child: Column(
           children: <Widget>[
             CustomAppBar(avatar: _avatar),

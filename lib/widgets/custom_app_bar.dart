@@ -12,27 +12,25 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Icon(
-            CustomIcons.menu,
-            color: Colors.white,
-          ),
-          Column(
-            children: [
-              Text('SUPERCINES', style: Theme.of(context).textTheme.headline1),
-              const TheaterSelector()
-            ],
-          ),
-          CircleAvatar(
-            backgroundImage: NetworkImage(avatar),
-            backgroundColor: Colors.red,
-          ),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Icon(
+          CustomIcons.menu,
+          color: Colors.white,
+        ),
+        Column(
+          children: [
+            Text('SUPERCINES', style: Theme.of(context).textTheme.headline1),
+            const TheaterSelector()
+          ],
+        ),
+        CircleAvatar(
+          backgroundImage: NetworkImage(avatar),
+          backgroundColor: Colors.red,
+        ),
+      ],
     );
   }
 }

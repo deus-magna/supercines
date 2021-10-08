@@ -14,7 +14,7 @@ class CardSwiper extends StatelessWidget {
     final _screenSize = MediaQuery.of(context).size;
 
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 20.0),
+      padding: const EdgeInsets.symmetric(vertical: 20),
       height: _screenSize.height * 0.30,
       child: Swiper(
         onIndexChanged: onIndexChanged,
@@ -22,7 +22,7 @@ class CardSwiper extends StatelessWidget {
           return Hero(
             tag: movies[index].id ?? 0,
             child: ClipRRect(
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(20),
                 child: FadeInImage(
                   image: NetworkImage(movies[index].getPosterImg()),
                   placeholder: const AssetImage('assets/img/no-image.jpg'),

@@ -25,7 +25,7 @@ class PosterImage extends StatelessWidget {
     return Row(
       children: [
         _buildImageContainer(size),
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         _buildMovieTitle(),
       ],
     );
@@ -36,7 +36,7 @@ class PosterImage extends StatelessWidget {
       child: Text(
         _movie.title!.toUpperCase(),
         maxLines: 2,
-        style: TextStyle(
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
           color: Colors.white,
           fontSize: 20,
@@ -52,10 +52,10 @@ class PosterImage extends StatelessWidget {
         width: 54,
         height: size.height * 0.085,
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(10),
           child: FadeInImage(
             image: NetworkImage(_movie.getPosterImg()),
-            placeholder: AssetImage('assets/img/no-image.jpg'),
+            placeholder: const AssetImage('assets/img/no-image.jpg'),
             fit: BoxFit.cover,
           ),
         ),

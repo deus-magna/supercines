@@ -3,11 +3,6 @@ import 'package:flutter/material.dart';
 typedef IndexedWidgetBuilder = Widget Function(BuildContext context, int index);
 
 class HorizontalScrollList extends StatelessWidget {
-  final double height;
-  final Color backgroundColor;
-  final int itemCount;
-  final IndexedWidgetBuilder itemBuilder;
-
   const HorizontalScrollList({
     Key? key,
     this.height = 90.0,
@@ -16,6 +11,11 @@ class HorizontalScrollList extends StatelessWidget {
     required this.itemBuilder,
   }) : super(key: key);
 
+  final double height;
+  final Color backgroundColor;
+  final int itemCount;
+  final IndexedWidgetBuilder itemBuilder;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,7 +23,7 @@ class HorizontalScrollList extends StatelessWidget {
       height: height,
       color: backgroundColor,
       child: ListView.builder(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: itemCount,
         itemBuilder: itemBuilder,

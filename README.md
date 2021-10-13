@@ -42,10 +42,17 @@ Give a ⭐️ if this project helped you!
 - Flutter [**Documentation**](https://flutter.io/docs/)
 
 ## Getting Started
+This project is built with Flutter 2 and Null-Safety
 
-This project is a Flutter Application, you can use Visual Studio Code or Android Studio to build it.
+This project is a Flutter Application, you can use Visual Studio Code or Android Studio to build it.  
+First download Flutter framework from [here](https://flutter.dev/docs/get-started/install).
+
+Run this commands on your terminal
 
 ```sh
+git clone https://github.com/deus-magna/supercines
+cd supercines
 flutter packages get
-flutter run --release
+flutter run
 ```
+For more info see [flutter doc](https://flutter.dev/docs) that contains examples, tutorials, gudes and more.
